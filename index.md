@@ -1,7 +1,8 @@
 ---
 layout: default
+title: Coming Soon
 ---
 
-# My Website is Coming Soon
+# 🚀 My Website is Launching Soon
 
-This is a custom GitHub Pages site.
+Stay tuned. This site will be updated shortly with awesome content.
