@@ -3,44 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Matrix Flow</title>
+  <title>Silcue</title>
   <style>
-    /* ORBITAL BACKGROUND */
-    .orbital-core {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
+    /* CIRCUIT GRID BACKGROUND */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(42, 48, 77, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42, 48, 77, 0.12) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: 0 0;
       z-index: -1;
+      animation: gridGlow 4s ease-in-out infinite, gridDrift 30s linear infinite;
+      filter: drop-shadow(0 0 2px rgba(42, 48, 77, 0.1));
+      opacity: 0.5;
     }
 
-    .ring {
-      position: absolute;
-      border: 1px solid rgba(42, 48, 77, 0.2);
-      border-radius: 50%;
-      animation: rotate 20s linear infinite;
+    @keyframes gridGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.2; }
     }
 
-    .ring:nth-child(1) {
-      width: 300px; height: 300px;
-      animation-duration: 30s;
-    }
-
-    .ring:nth-child(2) {
-      width: 400px; height: 400px;
-      animation-direction: reverse;
-      animation-duration: 45s;
-    }
-
-    .ring:nth-child(3) {
-      width: 500px; height: 500px;
-      animation-duration: 60s;
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes gridDrift {
+      0% { background-position: 0 0; }
+      100% { background-position: 40px 40px; }
     }
 
     /* LAYOUT + TYPOGRAPHY */
@@ -103,13 +91,13 @@
       overflow: hidden;
       border-right: 2px solid #2A304D;
       animation:
-        typing 6s steps(39, end) 1,
+        typing 3s steps(42, end) 1,
         blink 0.8s step-end infinite alternate;
     }
 
     @keyframes typing {
       from { width: 0; }
-      to { width: 43ch; }
+      to { width: 42ch; }
     }
 
     @keyframes blink {
@@ -155,15 +143,7 @@
   </div>
 
   <div class="section center">
-    <!-- Orbital Effect -->
-    <div class="orbital-core">
-      <div class="ring"></div>
-      <div class="ring"></div>
-      <div class="ring"></div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-word">MATRIX</div>
+    <div class="main-word">SILCUE</div>
     <div class="launching">Research in Motion — Engineering What’s Next</div>
   </div>
 
