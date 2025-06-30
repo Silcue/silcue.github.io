@@ -5,35 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Matrix Flow</title>
 
-  <!-- Load Staatliches font -->
-  <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet" />
+  <!-- Load Barlow Condensed for main text -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet" />
 
   <style>
-    /* PULSATING GRID BACKGROUND */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image:
-        linear-gradient(rgba(42, 48, 77, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(42, 48, 77, 0.08) 1px, transparent 1px);
-      background-size: 80px 80px;
-      animation: pulseGrid 4s ease-in-out infinite;
-      z-index: -1;
-    }
-
-    @keyframes pulseGrid {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.1; }
-    }
-
-    /* BASE LAYOUT */
     body {
       margin: 0;
       padding: 0;
       background-color: white;
       color: #2A304D;
-      font-family: 'Staatliches', sans-serif;
+      font-family: system-ui, sans-serif;
       height: 100vh;
       display: flex;
       flex-direction: row;
@@ -50,13 +31,8 @@
     }
 
     .side-word {
-      opacity: 0;
-      animation: fadeInOut 6s infinite;
       font-size: 1.8rem;
     }
-
-    .left { animation-delay: 0s; }
-    .right { animation-delay: 3s; }
 
     .center {
       flex-direction: column;
@@ -70,25 +46,17 @@
     }
 
     .main-word {
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 9.6rem;
-      font-weight: 400;
+      font-weight: 700;
       margin: auto 0;
       line-height: 1;
-      z-index: 1;
     }
 
     .message {
       font-size: 1.2rem;
       margin-top: 2rem;
       color: #2A304D;
-    }
-
-    @keyframes fadeInOut {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      40% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 0; }
     }
 
     @media (max-width: 768px) {
@@ -103,7 +71,7 @@
 <body>
 
   <!-- Left Section -->
-  <div class="section"><div class="side-word left">INFRASTRUCTURE</div></div>
+  <div class="section"><div class="side-word">INFRASTRUCTURE</div></div>
 
   <!-- Center Section -->
   <div class="section center">
@@ -112,7 +80,7 @@
   </div>
 
   <!-- Right Section -->
-  <div class="section"><div class="side-word right">INTELLIGENCE</div></div>
+  <div class="section"><div class="side-word">INTELLIGENCE</div></div>
 
 </body>
 </html>
