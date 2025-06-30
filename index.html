@@ -8,73 +8,65 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
+      background-color: white;
       color: #2A304D;
       font-family: "Segoe UI", sans-serif;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      overflow: hidden;
     }
 
-    .container {
-      text-align: center;
+    .line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: 400;
+      gap: 1.5rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      position: relative;
-      line-height: 1.5;
+    .center {
+      font-weight: 700; /* Bold */
     }
 
-    .fade-sequence span {
+    .side-word {
       opacity: 0;
-      transition: opacity 1s ease-in-out;
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
+      animation: fadeInOut 6s infinite;
     }
 
-    .fade-sequence span.show {
-      opacity: 1;
-      position: relative;
+    .left {
+      animation-delay: 0s;
     }
 
-    .highlight {
-      font-weight: bold;
-      color: #2A304D;
+    .right {
+      animation-delay: 3s;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      40% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 0; }
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.6rem;
+      .line {
+        font-size: 1.2rem;
+        flex-direction: column;
+        gap: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1 class="fade-sequence">
-      <span class="show">Infrastructure to <span class="highlight">SILCUE</span></span>
-      <span>Matrix to <span class="highlight">Intelligence</span></span>
-      <span>Infrastructure → <span class="highlight">SILCUE</span> → Intelligence</span>
-    </h1>
+  <div class="line">
+    <div class="side-word left">INFRASTRUCTURE</div>
+    <div class="center">SILCUE</div>
+    <div class="side-word right">INTELLIGENCE</div>
   </div>
-
-  <script>
-    const phrases = document.querySelectorAll(".fade-sequence span");
-    let index = 0;
-
-    setInterval(() => {
-      phrases[index].classList.remove("show");
-      index = (index + 1) % phrases.length;
-      phrases[index].classList.add("show");
-    }, 3000);
-  </script>
 
 </body>
 </html>
