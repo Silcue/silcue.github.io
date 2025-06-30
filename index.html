@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Silcue</title>
+  <title>Matrix Flow</title>
   <style>
     body {
       margin: 0;
@@ -11,28 +11,23 @@
       background-color: white;
       color: #2A304D;
       font-family: "Segoe UI", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-    }
-
-    .line {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2rem;
-      font-weight: 400;
-      gap: 1.5rem;
+      flex-direction: row;
     }
 
-    .center {
-      font-weight: 700; /* Bold */
+    .section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .side-word {
       opacity: 0;
       animation: fadeInOut 6s infinite;
+      font-size: 1.8rem;
     }
 
     .left {
@@ -43,6 +38,38 @@
       animation-delay: 3s;
     }
 
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-word {
+      font-size: 3.2rem;
+      font-weight: 800;
+    }
+
+    .launching {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #2A304D;
+      animation:
+        typing 3s steps(20, end) 1,
+        blink 0.8s step-end infinite alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 15ch; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
     @keyframes fadeInOut {
       0% { opacity: 0; }
       10% { opacity: 1; }
@@ -51,20 +78,44 @@
       100% { opacity: 0; }
     }
 
-    @media (max-width: 600px) {
-      .line {
-        font-size: 1.2rem;
+    @media (max-width: 768px) {
+      body {
         flex-direction: column;
-        gap: 0.8rem;
+      }
+
+      .section {
+        flex: unset;
+        height: 33.33vh;
+      }
+
+      .main-word {
+        font-size: 2.4rem;
+      }
+
+      .side-word {
+        font-size: 1.4rem;
+      }
+
+      .launching {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="line">
+  <div class="section">
     <div class="side-word left">INFRASTRUCTURE</div>
-    <div class="center">SILCUE</div>
+  </div>
+
+  <div class="section">
+    <div class="center">
+      <div class="main-word">MATRIX</div>
+      <div class="launching">Launching Soon</div>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="side-word right">INTELLIGENCE</div>
   </div>
 
