@@ -4,33 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Matrix Flow</title>
-  <!-- Use a serif alternative since BigNoodleTitling isn't web-hosted -->
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&display=swap');
-  </style>
-  <style>
-    /* DATA FLOW LINES BACKGROUND */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          135deg,
-          transparent 0,
-          transparent 20px,
-          rgba(42,48,77,0.05) 21px,
-          rgba(42,48,77,0.05) 22px
-        );
-      z-index: -1;
-      animation: flow 10s linear infinite;
-    }
-    @keyframes flow {
-      from { background-position: 0 0; }
-      to { background-position: 200px 200px; }
-    }
-
-    /* LAYOUT + TYPOGRAPHY */
+    /* Load a clean bold condensed font like BigNoodleTitling */
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+    
+    /* BASIC LAYOUT */
     body {
       margin: 0;
       padding: 0;
@@ -72,7 +50,7 @@
     }
 
     .main-word {
-      font-family: 'Playfair Display SC', serif; /* Simulated stylized title font */
+      font-family: 'Anton', sans-serif;
       font-size: 9.6rem;
       font-weight: 700;
       margin: auto 0;
@@ -84,16 +62,18 @@
       font-size: 1.2rem;
       white-space: nowrap;
       overflow: hidden;
+      width: 40ch; /* exact length of content */
       border-right: 2px solid #2A304D;
       animation:
-        typing 3s steps(42, end) 1,
+        typing 3s steps(40, end) 1,
         blink 0.8s step-end infinite alternate;
     }
 
     @keyframes typing {
       from { width: 0; }
-      to { width: 42ch; }
+      to { width: 40ch; }
     }
+
     @keyframes blink {
       50% { border-color: transparent; }
     }
@@ -106,21 +86,62 @@
       100% { opacity: 0; }
     }
 
+    /* MINIMAL PARTICLE BACKGROUND */
+    .particles {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background: white;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: rgba(42, 48, 77, 0.15);
+      border-radius: 50%;
+      animation: float 20s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-10vh); }
+    }
+
     @media (max-width: 768px) {
       body { flex-direction: column; }
       .section { flex: unset; height: 33vh; }
       .main-word { font-size: 4rem; }
       .side-word { font-size: 1.4rem; }
-      .launching { font-size: 1rem; }
+      .launching { font-size: 1rem; width: 100%; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ✨ PARTICLE BACKGROUND -->
+  <div class="particles">
+    <!-- 10 minimal, soft particles -->
+    <div class="particle" style="top:90%; left:5%; animation-delay: 0s;"></div>
+    <div class="particle" style="top:100%; left:15%; animation-delay: 3s;"></div>
+    <div class="particle" style="top:95%; left:25%; animation-delay: 1s;"></div>
+    <div class="particle" style="top:100%; left:35%; animation-delay: 5s;"></div>
+    <div class="particle" style="top:92%; left:45%; animation-delay: 2s;"></div>
+    <div class="particle" style="top:97%; left:55%; animation-delay: 4s;"></div>
+    <div class="particle" style="top:99%; left:65%; animation-delay: 6s;"></div>
+    <div class="particle" style="top:94%; left:75%; animation-delay: 2.5s;"></div>
+    <div class="particle" style="top:96%; left:85%; animation-delay: 1.5s;"></div>
+    <div class="particle" style="top:98%; left:95%; animation-delay: 3.5s;"></div>
+  </div>
+
+  <!-- ✨ TEXT SECTIONS -->
   <div class="section"><div class="side-word left">INFRASTRUCTURE</div></div>
   <div class="section center">
     <div class="main-word">MATRIX</div>
     <div class="launching">Research in Motion — Engineering What’s Next</div>
   </div>
   <div class="section"><div class="side-word right">INTELLIGENCE</div></div>
+
 </body>
 </html>
