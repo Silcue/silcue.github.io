@@ -3,8 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Silcue</title>
+  <title>Matrix Flow</title>
   <style>
+    /* Background Grid Animation */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: linear-gradient(#eaeef6 1px, transparent 1px),
+                        linear-gradient(90deg, #eaeef6 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.05; }
+    }
+
+    /* Layout & Typography */
     body {
       margin: 0;
       padding: 0;
@@ -60,13 +78,13 @@
       overflow: hidden;
       border-right: 2px solid #2A304D;
       animation:
-        typing 3s steps(20, end) 1,
+        typing 3s steps(40, end) 1,
         blink 0.8s step-end infinite alternate;
     }
 
     @keyframes typing {
       from { width: 0; }
-      to { width: 15ch; }
+      to { width: 40ch; }
     }
 
     @keyframes blink {
@@ -112,7 +130,7 @@
   </div>
 
   <div class="section center">
-    <div class="main-word">SILCUE</div>
+    <div class="main-word">MATRIX</div>
     <div class="launching">Research in Motion — Engineering What’s Next</div>
   </div>
 
