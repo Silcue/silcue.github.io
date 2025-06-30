@@ -3,80 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Silcue</title>
-
-  <!-- Load Exo 2 font -->
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap" rel="stylesheet" />
-
+  <title>Matrix Flow</title>
   <style>
-    /* BACKGROUND: Soft floating circles (very light colors) */
+    /* Background Grid Animation */
     body::before {
-      content: '';
+      content: "";
       position: fixed;
-      inset: 0;
-      background: white;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: linear-gradient(#eaeef6 1px, transparent 1px),
+                        linear-gradient(90deg, #eaeef6 1px, transparent 1px);
+      background-size: 40px 40px;
       z-index: -1;
+      animation: pulse 4s ease-in-out infinite;
     }
 
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.15;
-      animation: float 20s linear infinite;
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.05; }
     }
 
-    .circle:nth-child(1) {
-      width: 100px;
-      height: 100px;
-      background: #f0f8ff;
-      top: 80%;
-      left: 10%;
-      animation-delay: 0s;
-    }
-
-    .circle:nth-child(2) {
-      width: 80px;
-      height: 80px;
-      background: #f5f5f5;
-      top: 70%;
-      left: 80%;
-      animation-delay: 3s;
-    }
-
-    .circle:nth-child(3) {
-      width: 120px;
-      height: 120px;
-      background: #fff8dc;
-      top: 60%;
-      left: 40%;
-      animation-delay: 6s;
-    }
-
-    .circle:nth-child(4) {
-      width: 90px;
-      height: 90px;
-      background: #e0ffff;
-      top: 50%;
-      left: 60%;
-      animation-delay: 9s;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-100vh) scale(1.5); }
-    }
-
-    /* PAGE LAYOUT */
+    /* Layout & Typography */
     body {
       margin: 0;
       padding: 0;
       background-color: white;
       color: #2A304D;
-      font-family: system-ui, sans-serif;
+      font-family: "Segoe UI", sans-serif;
       height: 100vh;
       display: flex;
       flex-direction: row;
-      overflow: hidden;
     }
 
     .section {
@@ -85,11 +40,20 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
     }
 
     .side-word {
+      opacity: 0;
+      animation: fadeInOut 6s infinite;
       font-size: 1.8rem;
+    }
+
+    .left {
+      animation-delay: 0s;
+    }
+
+    .right {
+      animation-delay: 3s;
     }
 
     .center {
@@ -100,51 +64,79 @@
       display: flex;
       height: 100%;
       box-sizing: border-box;
-      text-align: center;
     }
 
     .main-word {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 9.6rem;
-      font-weight: 700;
+      font-size: 3.2rem;
+      font-weight: 800;
       margin: auto 0;
-      line-height: 1;
     }
 
-    .message {
+    .launching {
       font-size: 1.2rem;
-      margin-top: 2rem;
-      color: #2A304D;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #2A304D;
+      animation:
+        typing 3s steps(40, end) 1,
+        blink 0.8s step-end infinite alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 40ch; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      40% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 0; }
     }
 
     @media (max-width: 768px) {
-      body { flex-direction: column; }
-      .section { flex: unset; height: 33vh; }
-      .main-word { font-size: 4rem; }
-      .side-word { font-size: 1.4rem; }
-      .message { font-size: 1rem; }
+      body {
+        flex-direction: column;
+      }
+
+      .section {
+        flex: unset;
+        height: 33.33vh;
+      }
+
+      .main-word {
+        font-size: 2.4rem;
+      }
+
+      .side-word {
+        font-size: 1.4rem;
+      }
+
+      .launching {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating background circles -->
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-
-  <!-- Left: INTELLIGENCE -->
-  <div class="section"><div class="side-word">INTELLIGENCE</div></div>
-
-  <!-- Center: MATRIX -->
-  <div class="section center">
-    <div class="main-word">SILCUE</div>
-    <div class="message">Research in Motion — Engineering What’s Next</div>
+  <div class="section">
+    <div class="side-word left">INFRASTRUCTURE</div>
   </div>
 
-  <!-- Right: INFRASTRUCTURE -->
-  <div class="section"><div class="side-word">INFRASTRUCTURE</div></div>
+  <div class="section center">
+    <div class="main-word">MATRIX</div>
+    <div class="launching">Research in Motion — Engineering What’s Next</div>
+  </div>
+
+  <div class="section">
+    <div class="side-word right">INTELLIGENCE</div>
+  </div>
 
 </body>
 </html>
